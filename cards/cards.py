@@ -204,8 +204,6 @@ def make_empty_project(in_path: str,
 
         print()
 
-        open_path(destination_path)
-
         return True
     except IOError as error:
         WarningDisplay.could_not_make_new_project_error(
@@ -1144,5 +1142,3 @@ def make(data_paths: list,
               .format(generated_directory_size, output_location_message))
 
     print()
-
-    open_path(output_path)
