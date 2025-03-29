@@ -327,7 +327,7 @@ svg:hover .hoverable {
   /* Cut guides should appear on top of any content. Use -1 to appear below */
   z-index: 1;
 
-  opacity: .4;
+  opacity: .8;
 }
 
 .cut-guide-line {
