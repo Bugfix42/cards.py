@@ -313,4 +313,42 @@ window.onload = function() {
     // while we determine e.g. whether or not to show a backs toggle
     revealUI();
   }, 300);
+
+  
+  // save zip of all cards
+  var zip = new JSZip();
+  var cardElements = document.getElementsByClassName('card-content');
+
+  if (cardElements.length > 0) {
+    var promises = [];
+
+    for (var i = 0; i < cardElements.length; i++) {
+      (function(index) {
+        var cardElement = cardElements[index];
+        promises.push(
+          html2canvas(cardElement).then(canvas => {
+            return new Promise(resolve => {
+              canvas.toBlob(blob => {
+                zip.file(`card-content-${index + 1}.png`, blob);
+                resolve();
+              }, 'image/png');
+            });
+          })
+        );
+      })(i);
+    }
+
+    Promise.all(promises).then(() => {
+      zip.generateAsync({ type: 'blob' }).then(function(content) {
+          var link = document.createElement('a');
+          link.textContent = 'Download Cards';
+          link.download = 'card-contents.zip';
+          link.href = URL.createObjectURL(content);
+          link.style.position = 'fixed';
+          link.style.bottom = '10px';
+          link.style.right = '10px';
+          document.body.appendChild(link);
+        });
+    });
+  }
 };
