@@ -1062,6 +1062,12 @@ def make(data_paths: list,
     copy_file_if_necessary(os.path.join(base_path, 'templates/base/js/index.js'),
                            os.path.join(js_path, 'index.js'))
 
+    copy_file_if_necessary(os.path.join(base_path, 'templates/base/js/html2canvas.min.js'),
+                           os.path.join(js_path, 'html2canvas.min.js'))
+
+    copy_file_if_necessary(os.path.join(base_path, 'templates/base/js/jszip.min.js'),
+                           os.path.join(js_path, 'jszip.min.js'))
+
     all_copied_image_filenames = []
 
     # additionally, copy all referenced images to the output directory
