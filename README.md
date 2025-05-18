@@ -13,19 +13,29 @@ Use the print function of your browser to save the pages to a PDF or to print th
 Install straight from the source:
 
 ```console
-$ python3 setup.py install
+$ pip install .
 ```
+
+<details>
+  <summary><strong>Development Installation</strong></summary>
+
+For development, you can install in editable mode:
+
+```console
+$ pip install -e .
+```
+
+This allows you to modify the source code and see changes without reinstalling.
+</details>
 
 <details>
   <summary><strong>Uninstalling</strong></summary>
 
-If you want to uninstall `cards.py` and make sure that you get rid of everything, you can run the installation again using the additional **--record** argument to save a list of all installed files:
+To uninstall `cards.py`, simply use pip:
 
 ```console
-$ python3 setup.py install --record installed_files.txt
+$ pip uninstall cards.py
 ```
-
-You can then go through all listed files and manually delete each one.
 </details>
 
 # Usage
@@ -71,10 +81,12 @@ $ python3 -m cards make cards.csv
 
 ## Requirements
 
-This project strives to keep dependencies at an absolute minimum.
+This project strives to keep dependencies at an absolute minimum. All dependencies will be automatically installed when you install the package.
 
   * Python 3.5+
   * [docopt](https://github.com/docopt/docopt) - provides a nicer command-line interface
+
+Dependencies are managed through `pyproject.toml` and will be installed automatically when you install the package.
 
 ## Browser support
 
